@@ -13,6 +13,7 @@ python -m venv .venv
 ```
 
 3. Ative o ambiente virutal
+
     a. Linux
     ```bash
     source .venv/bin/activate
