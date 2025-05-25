@@ -1,6 +1,25 @@
-# Bot para discord
+<h1 align="center">
+  <br>
+  RPG Discord Bot
+  <br>
+</h1>
 
-### Instalação
+<h4 align="center">Rolar dados, ajuda para criação de ficha, trilha sonora</h4>
+
+<p align="center">
+  <a href="#Visão Geral">Visão Geral</a>
+  •
+  <a href="#installation">Instalação</a>
+  •
+  <a href="">Documentação</a>
+</p>
+
+# Visão Geral
+
+Este é um bot de discord para auxiliar jogadores de RPG oferencendo uma série de funcionalidades para facilitar o processo de criação de fichas, jogabilidade e melhorar a experiência de jogo.
+
+
+# Instalação
 
 1. Clone o repositório
 ```bash

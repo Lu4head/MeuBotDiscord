@@ -1,30 +1,22 @@
-import os
 import discord
 import random
 from typing import Optional
 from discord.ext import commands
-from google import genai
-
-ai_client = genai.Client(api_key=os.getenv("AI_API_KEY"))
+from ai.ai_bot import AIBot
 
 intents = discord.Intents.default()
 intents.message_content = True
 
-bot = commands.Bot(command_prefix='!', intents=intents)
+discord_bot = commands.Bot(command_prefix="!",intents=intents)
+ai_bot = AIBot()
 
-
-@bot.event
+@discord_bot.event
 async def on_ready():
-    print(f'We have logged in as {bot.user}')
+    print(f'We have logged in as {discord_bot.user}')
     print("bot is running...")
 
 
-@bot.command()
-async def teste(ctx, arg: Optional[str] = ''):
-    await ctx.send(f"Hello {arg}!")
-
-
-@bot.command()
+@discord_bot.command()
 async def roll(ctx, dice: Optional[str]):
     if not dice:
         await ctx.send("Informe sua rolada")
@@ -46,20 +38,23 @@ async def roll(ctx, dice: Optional[str]):
 
     results = []
     results = [random.randint(1, numero_de_faces)
-               for _ in range(numero_de_dados)]
+            for _ in range(numero_de_dados)]
     results_formatado = ', '.join(map(str, results))
+    print(type(ctx.author))
+    print(ctx.author.mention)
     message = f"""
-    :game_die: Rolada de {dice}
+    :game_die: {ctx.author.mention} Rolada de {dice}
     Resultado: {results_formatado}
     Total: {sum(results)}
     """
     await ctx.send(message)
 
-
-@bot.command()
-async def ai(ctx, *, prompt):
-    response = ai_client.models.generate_content(
-        model="gemini-1.5-flash", contents=prompt)
-    await ctx.send(response.text)
-
-bot.run(os.getenv("BOT_TOKEN"))
+@discord_bot.command()
+async def ia(ctx, *, prompt):
+    if not prompt:
+        await ctx.send("Desculpe, não entendi sua pergunta.")
+    
+    await ctx.send(ai_bot.invoke(prompt))
+        
+    
+    

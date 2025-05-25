@@ -1,0 +1,5 @@
+site_name: DISCORD_RPG_BOT
+repo_url: https://github.com/Lu4head/discord_rpg_bot
+
+theme:
+  name: readthedocs
