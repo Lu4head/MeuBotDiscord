@@ -4,7 +4,7 @@
 
 1. Clone o repositório
 ```bash
-git clone https://github.com/Vinicius-Mendes/bot-discord.git
+git clone https://github.com/Lu4head/MeuBotDiscord.git
 ```
 
 2. Crie o ambiente virutal python
